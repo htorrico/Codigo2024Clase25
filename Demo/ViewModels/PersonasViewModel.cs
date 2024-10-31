@@ -1,6 +1,8 @@
-﻿using Demo.Utilitarios;
+﻿using Demo.Models;
+using Demo.Utilitarios;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +24,6 @@ namespace Demo.ViewModels
                 OnPropertyChanged(nameof(Resultado));
             }
         }
-
-
-
 
 
         private string _Nombres;
@@ -60,9 +59,9 @@ namespace Demo.ViewModels
             }
         }
 
-
         #endregion
 
+        public ObservableCollection<PersonaModel> Personas { get; }
 
         #region Comando
         public ICommand GuardarCommand { get; }
@@ -70,10 +69,19 @@ namespace Demo.ViewModels
         public PersonasViewModel()
         {
             GuardarCommand = new RelayCommand(Guardar);
+            Personas = new ObservableCollection<PersonaModel>();
         }
         private void Guardar()
         {
             Resultado = string.Concat(Nombres, " ", Apellidos, " ", Edad);
+
+            Personas.Add(new PersonaModel
+            {
+                Apellidos = this.Apellidos,
+                Nombres = this.Nombres,
+                FechaCreacion = DateTime.Now,
+                 UsuarioCreacion="htorrico"
+            });
 
         }
         #endregion
