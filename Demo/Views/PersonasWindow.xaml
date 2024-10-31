@@ -9,12 +9,17 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox  Style="{StaticResource inputStyle}" />
-                <TextBox Style="{StaticResource inputStyle}" />
-                <TextBox  Style="{StaticResource inputStyle}" />
+                <TextBox Text="{Binding Nombres}"   Style="{StaticResource inputStyle}" />
+                <TextBox Text="{Binding Apellidos}"  Style="{StaticResource inputStyle}" />
+                <TextBox Text="{Binding Edad}"  Style="{StaticResource inputStyle}" />
             </StackPanel>
+            <Label Background="Red" Height="30" Foreground="White"
+                   Content="{Binding Resultado}"
+                   ></Label>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Agregar" x:Name="Agregar"  Style="{StaticResource styleBuscar}"  ></Button>
+                <Button Content="Guardar" 
+                        Command="{Binding GuardarCommand}"
+                        Style="{StaticResource styleBuscar}"  ></Button>
             </StackPanel>
 
             <ListView >

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Demo.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace Demo.Views
         public PersonasWindow()
         {
             InitializeComponent();
+            this.DataContext = new PersonasViewModel();
         }
     }
 }
